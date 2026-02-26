@@ -1,0 +1,24 @@
+# BlueGold Trading configuration
+# Copy this file to config.yaml and fill in your credentials.
+
+strategy:
+  name: galaxy
+  api_url: http://localhost:3000/api/strategies/galaxy/live
+  api_access_key: "bg_live_YOUR_KEY_HERE"
+
+broker:
+  type: alpaca # Currently supported: alpaca
+  api_key: "APCA-API-KEY-ID"
+  api_secret: "APCA-API-SECRET-KEY"
+  paper: true # true = paper trading, false = live
+
+trigger:
+  type: scheduled # scheduled | polling
+  time: "16:05" # Time to run (HH:MM, 24h) — only for 'scheduled'
+  timezone: America/New_York
+  poll_interval_seconds: 60 # Only for 'polling' trigger
+
+trading:
+  min_order_value: 1.0 # Skip orders below this dollar amount
+  max_position_drift: 0.02 # Only rebalance if weight diff > 2%
+  dry_run: true # true = log orders without executing
