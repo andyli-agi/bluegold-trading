@@ -13,10 +13,9 @@ broker:
   paper: true # true = paper trading, false = live
 
 trigger:
-  type: scheduled # scheduled | polling
+  type: scheduled
   time: "16:05" # Time to run (HH:MM, 24h) — only for 'scheduled'
   timezone: America/New_York
-  poll_interval_seconds: 60 # Only for 'polling' trigger
 
 trading:
   min_order_value: 1.0 # Skip orders below this dollar amount

@@ -21,10 +21,9 @@ class BrokerConfig(BaseModel):
 
 
 class TriggerConfig(BaseModel):
-    type: Literal["scheduled", "polling"] = "scheduled"
+    type: Literal["scheduled"] = "scheduled"
     time: str = "16:05"
     timezone: str = "America/New_York"
-    poll_interval_seconds: int = 60
 
 
 class TradingConfig(BaseModel):
