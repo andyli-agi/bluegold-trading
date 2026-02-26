@@ -3,7 +3,7 @@
 
 strategy:
   name: galaxy
-  api_url: http://localhost:3000/api/strategies/galaxy/live
+  api_url: https://bluegold.ai/api/strategies/galaxy/live
   api_access_key: "bg_live_YOUR_KEY_HERE"
 
 broker:
@@ -13,12 +13,11 @@ broker:
   paper: true # true = paper trading, false = live
 
 trigger:
-  type: scheduled # scheduled | polling
-  time: "16:05" # Time to run (HH:MM, 24h) — only for 'scheduled'
+  type: scheduled
+  time: "15:50" # Time to run (HH:MM, 24h)
   timezone: America/New_York
-  poll_interval_seconds: 60 # Only for 'polling' trigger
 
 trading:
   min_order_value: 1.0 # Skip orders below this dollar amount
-  max_position_drift: 0.02 # Only rebalance if weight diff > 2%
+  max_position_drift: 0.01 # Only rebalance if weight diff > 2%
   dry_run: true # true = log orders without executing

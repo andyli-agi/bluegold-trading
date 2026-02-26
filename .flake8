@@ -1,0 +1,3 @@
+[flake8]
+exclude = venv,alembic/versions
+max-line-length=1024

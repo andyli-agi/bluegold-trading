@@ -11,9 +11,4 @@ def create_trigger(config: TriggerConfig, engine: TradingEngine) -> Trigger:
 
         return ScheduledTrigger(config, engine)
 
-    if config.type == "polling":
-        from bluegold_trading.triggers.polling import PollingTrigger
-
-        return PollingTrigger(config, engine)
-
     raise ValueError(f"Unsupported trigger type: {config.type!r}")

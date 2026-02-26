@@ -4,7 +4,7 @@ Automated trade execution — fetch target allocations from [BlueGold](https://b
 
 ## How It Works
 
-1. **Trigger** fires (fixed daily schedule or polling for new signals)
+1. **Trigger** fires (fixed daily schedule)
 2. **Fetch** target portfolio weights from the BlueGold API
 3. **Compare** target weights against your current brokerage positions
 4. **Execute** sell-then-buy orders to rebalance (or dry-run to preview)
@@ -65,7 +65,7 @@ bluegold-trading run
 # Show current positions vs target allocations
 bluegold-trading status
 
-# Start a continuous loop (scheduled or polling)
+# Start a continuous loop (scheduled)
 bluegold-trading start
 ```
 
@@ -90,10 +90,9 @@ Global options: `--config PATH` (default `config.yaml`), `--verbose` / `-v`.
 | `broker`   | `type`                   | Brokerage adapter (`alpaca`)                        |
 |            | `api_key` / `api_secret` | Brokerage API credentials                           |
 |            | `paper`                  | `true` for paper trading, `false` for live          |
-| `trigger`  | `type`                   | `scheduled` (cron) or `polling`                     |
+| `trigger`  | `type`                   | `scheduled` (cron)                                  |
 |            | `time`                   | Execution time in HH:MM 24h format (scheduled only) |
 |            | `timezone`               | IANA timezone (e.g. `America/New_York`)             |
-|            | `poll_interval_seconds`  | Seconds between polls (polling only)                |
 | `trading`  | `min_order_value`        | Skip orders below this dollar amount                |
 |            | `max_position_drift`     | Only rebalance if weight diff exceeds this (0-1)    |
 |            | `dry_run`                | `true` to log orders without executing              |
@@ -132,7 +131,6 @@ bluegold_trading/
   triggers/
     base.py           # Abstract Trigger interface
     scheduled.py      # APScheduler cron trigger
-    polling.py        # Poll-for-new-date trigger
 ```
 
 ## License
